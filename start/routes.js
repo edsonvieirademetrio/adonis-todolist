@@ -17,8 +17,9 @@
 const Route = use('Route')
 
 Route.on('/').render('home')
-Route.get('/test', () => 'Hello Test!')
-Route.get('/test/:id', function({params}){
-    return `this is page id ${params.id}`
-})
-Route.get('/task', 'TaskController.index')
+Route.get('/tasks', 'TaskController.index')
+Route.on('/add').render('add')
+Route.post('/add', 'TaskController.store')
+
+Route.get('/task/:id', 'TaskController.detail')
+Route.get('/remove/:id', 'TaskController.remove')
